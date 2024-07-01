@@ -1,13 +1,32 @@
 // Net salary Calculator
 
+const prompt = require("prompt-sync")();
+
 // basic salary and benefits (total taxable income)
-let basicSalary; //input basic salary
-let benefits; // input allowances 
-const pension = 20000;
-let taxablePay = basicSalary + benefits
+
+//input basic salary
+let basicSalary = prompt("Fill in your basic salary below : "); 
+basicSalary === Number;
+
+// input allowances 
+
+// let benefits = prompt("Do you have any allowances, if yes, fill in below : "); 
+// benefits === Number
+
+// //taxable income
+// function getSum(a, b) {
+//     c = a + b
+//     return c
+// }
+
+
+const taxablePay = (basicSalary);
+console.log(`Your total taxable income is ${taxablePay}`)
+
+
 // P.A.Y.E(tax) (based off taxable income)
 function getPAYE() {if (taxablePay > 0 && taxablePay < 24001) {
-    console.log(tataxablePay * 10)
+    console.log(taxablePay * 10)
 } else if(taxablePay > 24000 && taxablePay < 32334) {
     console.log(taxablePay * 25)
 } else if(taxablePay > 32333 && taxablePay < 500001) {
@@ -19,6 +38,9 @@ function getPAYE() {if (taxablePay > 0 && taxablePay < 24001) {
 } else {
     console.log(`Please input valid value!`)
 }}
+getPAYE(taxablePay)
+console.log(`Your taxes amount to the ${getPAYE(taxablePay)}`)
+
 
 let relief;
 let disabled;
@@ -27,7 +49,7 @@ const PAYEE = getPAYE - (relief + exemption);
  
 
 // Deductions(NHIF and NSSF)
-function NhifDeductions() {if (taxablePay > 0 && <6000) {
+function NhifDeductions() {if (taxablePay > 0 && taxablePay < 6000) {
     return 150
 } else if( taxablePay >= 6000 && taxablePay < 8000) {
     return 300;
