@@ -5,9 +5,9 @@
 // taxable pay = bs + benefits ^
 // get taxes incurred(exemption of pension) ^
 // payee (gross tax)= taxes incurred - relief ^
-// gross pay = taxablepay - gross tax(payee)
-// get deductions(nhif and nssf)
-// net salary = gross salary - deductions
+// gross pay = taxablepay - gross tax(payee) ^
+// get deductions(nhif and nssf) ^
+// net salary = gross salary - deductions ^
 
 const prompt = require("prompt-sync")();
 
