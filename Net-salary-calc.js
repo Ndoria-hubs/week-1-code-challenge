@@ -20,30 +20,30 @@ basicSalary === Number;
 // }
 
 
-const taxablePay = (basicSalary);
-console.log(`Your total taxable income is ${taxablePay}`)
+// const taxablePay = (basicSalary);
+// console.log(`Your total taxable income is ${taxablePay}`)
 
 
-// P.A.Y.E(tax) (based off taxable income)
-function getPAYE() {if (taxablePay > 0 && taxablePay < 24001) {
-    console.log(taxablePay * 10)
-} else if(taxablePay > 24000 && taxablePay < 32334) {
-    console.log(taxablePay * 25)
-} else if(taxablePay > 32333 && taxablePay < 500001) {
-    console.log(taxablePay * 30)
-} else if (taxablePay >= 500000 && taxablePay < 800001) {
-    console.log(taxablePay * 32.5) 
-} else if (taxablePay >= 800000) {
-    console.log(taxablePay * 35)
-} else {
-    console.log(`Please input valid value!`)
-}}
-getPAYE(taxablePay)
-console.log(`Your taxes amount to the ${getPAYE(taxablePay)}`)
+// // P.A.Y.E(tax) (based off taxable income)
+// function getPAYE() {if (taxablePay > 0 && taxablePay < 24001) {
+//     console.log(taxablePay * 10)
+// } else if(taxablePay > 24000 && taxablePay < 32334) {
+//     console.log(taxablePay * 25)
+// } else if(taxablePay > 32333 && taxablePay < 500001) {
+//     console.log(taxablePay * 30)
+// } else if (taxablePay >= 500000 && taxablePay < 800001) {
+//     console.log(taxablePay * 32.5) 
+// } else if (taxablePay >= 800000) {
+//     console.log(taxablePay * 35)
+// } else {
+//     console.log(`Please input valid value!`)
+// }}
+// getPAYE(taxablePay)
+// console.log(`Your taxes amount to the ${getPAYE()}`)
 
 
 let relief;
-let disabled;
+let disabled ;
 exemption = (disabled = true) ? 150000 : 0 ;
 const PAYEE = getPAYE - (relief + exemption);
  
