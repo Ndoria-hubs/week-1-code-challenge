@@ -10,19 +10,20 @@ function getPoints() {if (carSpeed <= 70 && carSpeed > 0) {
     console.log(`Points = 0`)
 } else { 
     const demeritPoints = ((carSpeed - 70)/ 5);
+    console.log(`Points = ${demeritPoints}`)
     return demeritPoints;
 }
 }
-getPoints(carSpeed);
 
-function penalty() {if (demeritPoints < 12) { 
+let accPoints = getPoints(carSpeed);
+
+function penalty() {if (accPoints < 12) { 
         console.log("Ok.")
 } else {
         console.log(`License suspended!`);
-        return 
 }
 }
-penalty(demeritPoints);
+penalty(accPoints);
 
 
 
