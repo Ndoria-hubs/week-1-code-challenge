@@ -4,20 +4,30 @@ const prompt = require("prompt-sync")();
 
 // input Car Speed
 let carSpeed = prompt(`Car input as recorded in km/h: `);
-let demerit = 0;
 
-// const sumArr = numbersArr.reduce((acc, element) => {
-//     console.log(acc);
-//     console.log(element);
-//     return acc + element;
-// }, 70)
-
-if (carSpeed <= 70 && carSpeed > 0) {
-    console.log("Ok.")
-} else if ( carSpeed > 70) {
-        console.log(`demerit incurred`)
-        return `demerit`
-} else {
-    null;
+// get number of demerit points
+function getPoints() {if (carSpeed <= 70 && carSpeed > 0) {
+    console.log(`Points = 0`)
+} else { 
+    const demeritPoints = ((carSpeed - 70)/ 5);
+    return demeritPoints;
 }
+}
+getPoints(carSpeed);
+
+function penalty() {if (demeritPoints < 12) { 
+        console.log("Ok.")
+} else {
+        console.log(`License suspended!`);
+        return 
+}
+}
+penalty(demeritPoints);
+
+
+
+
+
+
+
 
