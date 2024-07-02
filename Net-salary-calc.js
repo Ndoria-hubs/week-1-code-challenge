@@ -2,16 +2,15 @@
 
 const prompt = require("prompt-sync")();
 
-// basic salary and benefits (total taxable income)
+// // basic salary and benefits (total taxable income)
 
-//input basic salary
-let basicSalary = prompt("Fill in your basic salary below : "); 
-basicSalary === Number;
+// //input basic salary
+let basicSalary = parseFloat(prompt(`Fill in your basicSalary below:`)) 
+// // basicSalary === Number;
 
-// input allowances 
-
-// let benefits = prompt("Do you have any allowances, if yes, fill in below : "); 
-// benefits === Number
+// // input allowances 
+let benefits = parseFloat(prompt(`Do you have any allowances, if yes, fill in below:`));
+// // benefits === Number;
 
 // //taxable income
 // function getSum(a, b) {
@@ -19,33 +18,33 @@ basicSalary === Number;
 //     return c
 // }
 
-
-// const taxablePay = (basicSalary);
+const taxablePay = basicSalary + benefits;
+// const taxablePay = getSum(basicSalary, benefits);
 // console.log(`Your total taxable income is ${taxablePay}`)
 
 
-// // P.A.Y.E(tax) (based off taxable income)
-// function getPAYE() {if (taxablePay > 0 && taxablePay < 24001) {
-//     console.log(taxablePay * 10)
-// } else if(taxablePay > 24000 && taxablePay < 32334) {
-//     console.log(taxablePay * 25)
-// } else if(taxablePay > 32333 && taxablePay < 500001) {
-//     console.log(taxablePay * 30)
-// } else if (taxablePay >= 500000 && taxablePay < 800001) {
-//     console.log(taxablePay * 32.5) 
-// } else if (taxablePay >= 800000) {
-//     console.log(taxablePay * 35)
-// } else {
-//     console.log(`Please input valid value!`)
-// }}
-// getPAYE(taxablePay)
-// console.log(`Your taxes amount to the ${getPAYE()}`)
+// P.A.Y.E(tax) (based off taxable income)
+function getPAYE(taxablePay) {if (taxablePay > 0 && taxablePay < 24001) {
+    console.log(taxablePay * 0.10)
+} else if(taxablePay > 24000 && taxablePay < 32334) {
+    console.log(taxablePay * 0.25)
+} else if(taxablePay > 32333 && taxablePay < 500001) {
+    console.log(taxablePay * 0.30)
+} else if (taxablePay >= 500000 && taxablePay < 800001) {
+    console.log(taxablePay * 0.325) 
+} else if (taxablePay >= 800000) {
+    console.log(taxablePay * 0.35)
+} else {
+    console.log(`Please input valid value!`)
+}}
+const payee = getPAYE(taxablePay);
+console.log(`Your taxes amount to the ${payee}`)
 
 
-let relief;
-let disabled ;
-exemption = (disabled = true) ? 150000 : 0 ;
-const PAYEE = getPAYE - (relief + exemption);
+// let relief;
+// let disabled ;
+// exemption = (disabled = true) ? 150000 : 0 ;
+// const  = getPAYE - (relief + exemption);
  
 
 // Deductions(NHIF and NSSF)
