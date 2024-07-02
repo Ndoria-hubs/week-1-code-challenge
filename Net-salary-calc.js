@@ -1,54 +1,65 @@
-// Net salary Calculator
+// | Net salary Calculator |
+
+// basic salary Input ^
+// benefits Input ^
+// taxable pay = bs + benefits ^
+// get taxes incurred(exemption of pension) ^
+// payee (gross tax)= taxes incurred - relief ^
+// gross pay = taxablepay - gross tax(payee)
+// get deductions(nhif and nssf)
+// net salary = gross salary - deductions
 
 const prompt = require("prompt-sync")();
 
-// // basic salary and benefits (total taxable income)
+// // // basic salary and benefits (total taxable income)
 
 // //input basic salary
 let basicSalary = parseFloat(prompt(`Fill in your basicSalary below:`)) 
-// // basicSalary === Number;
+basicSalary === Number;
 
 // // input allowances 
 let benefits = parseFloat(prompt(`Do you have any allowances, if yes, fill in below:`));
-// // benefits === Number;
+benefits === Number;
 
-// //taxable income
-// function getSum(a, b) {
-//     c = a + b
-//     return c
-// }
+const taxablePay = (basicSalary + benefits);
 
-const taxablePay = basicSalary + benefits;
-// const taxablePay = getSum(basicSalary, benefits);
-// console.log(`Your total taxable income is ${taxablePay}`)
+console.log(`Total taxable income = ${taxablePay}`)
 
 
 // P.A.Y.E(tax) (based off taxable income)
 function getPAYE(taxablePay) {if (taxablePay > 0 && taxablePay < 24001) {
-    console.log(taxablePay * 0.10)
+    return taxablePay * 0.10
 } else if(taxablePay > 24000 && taxablePay < 32334) {
-    console.log(taxablePay * 0.25)
+    return taxablePay * 0.25
 } else if(taxablePay > 32333 && taxablePay < 500001) {
-    console.log(taxablePay * 0.30)
+    return taxablePay * 0.30
 } else if (taxablePay >= 500000 && taxablePay < 800001) {
-    console.log(taxablePay * 0.325) 
+    return taxablePay * 0.325 
 } else if (taxablePay >= 800000) {
-    console.log(taxablePay * 0.35)
+    return taxablePay * 0.35
 } else {
-    console.log(`Please input valid value!`)
+    return `Please input valid value!`
 }}
 const payee = getPAYE(taxablePay);
-console.log(`Your taxes amount to the ${payee}`)
+console.log(`Taxes to be deducted = ${payee}`)
 
 
-// let relief;
-// let disabled ;
-// exemption = (disabled = true) ? 150000 : 0 ;
-// const  = getPAYE - (relief + exemption);
- 
+const isDisabled = prompt('I have a disability?(true or false) : ')
+typeof isDisabled === Boolean;
+exemption = (isDisabled) ? 15000 : 0 ;
+console.log(`You are exempted ${exemption} of tax`);
+
+// gross Tax
+totalTaxes = payee - exemption
+console.log(`Total taxes therefore amount to ${totalTaxes}`);
+
+// gross Pay
+grossPay = taxablePay - totalTaxes;
+console.log(`Pay before deductions: ${grossPay}`);
 
 // Deductions(NHIF and NSSF)
-function NhifDeductions() {if (taxablePay > 0 && taxablePay < 6000) {
+// NHIF
+function getNhifDeductions() {if (taxablePay > 0 && taxablePay < 6000) {
     return 150
 } else if( taxablePay >= 6000 && taxablePay < 8000) {
     return 300;
@@ -86,11 +97,35 @@ function NhifDeductions() {if (taxablePay > 0 && taxablePay < 6000) {
     return `Invalid Tax Bracket!`
 }
 }
+getNhifDeductions(taxablePay);
+const nhifRates = getNhifDeductions();
+console.log(`NHIF allocation: ${nhifRates}`)
 
+//  NSSF  - 6% of pensionablepay
+/**tier I and II 
+ * tier I = upto 7000
+ * tier II = 7001 - 36000
+*/
+function getNssfContributions(totalTaxes) {
+    if( totalTaxes > 0 && totalTaxes < 7001) {
+        console.log(`NSSF Tier I`)
+        return (0.06 * totalTaxes);
+    } else if (totalTaxes > 7000 && totalTaxes < 36001) {
+        console.log(`NSSF Tier II`)
+        return (0.06 * totalTaxes);
+    } else {
+        console.log(`No NSSF contributions`)
+        return 0;
+    }
+}
 
+const nssfContributions = getNssfContributions(totalTaxes);
+console.log(`NSSF Contributions: ${nssfContributions}`)
 
-// Gross Salary (Taxable Income - P.A.Y.E)
-
+//total deductions
+totalDeductions = nhifRates + nssfContributions;
 
 
 // Net salary (Gross salary - Deductions)
+netSalary = grossPay - totalDeductions;
+console.log(`Monthly Net Salary :${netSalary}`);
